@@ -19,6 +19,25 @@ public class ParkingFloor {
         this.slots = slotsList;
     }
 
+    public static List<ParkingSlot> generateSlots(int n) {
+        List<ParkingSlot> slots = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            ParkingSlot slot;
+
+            if (i == 1) {
+                slot = new ParkingSlot(i, VehicleType.TRUCK, false);
+            } else if (i == 2 || i == 3) {
+                slot = new ParkingSlot(i, VehicleType.BIKE, false);
+            } else {
+                slot = new ParkingSlot(i, VehicleType.CAR, false);
+            }
+
+            slots.add(slot);
+        }
+
+        return slots;
+    }
+
     public ParkingSlot getAvailableSlot(VehicleType vehicleType) {
         for (ParkingSlot parkingSlot : this.slots) {
             if (parkingSlot.getVehicleType() == vehicleType && !parkingSlot.isOccupied) {

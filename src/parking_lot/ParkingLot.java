@@ -25,7 +25,7 @@ public class ParkingLot {
     }
 
     public void createParkingLot() {
-        List<ParkingSlot> slots = ParkingSlot.createSlots(this.slots);
+        List<ParkingSlot> slots = ParkingFloor.generateSlots(this.slots);
         for (int i = 1; i <= this.floors; i++) {
             ParkingFloor parkingFloor = new ParkingFloor(i, slots);
             parkingFloorsHashMap.put(parkingFloor.getFloorNo(), parkingFloor);

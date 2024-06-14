@@ -11,6 +11,7 @@ public class ParkingLotMain {
         scanner.useDelimiter(System.getProperty("line.separator"));
         ParkingLot parkingLot = null;
 
+        
         while (scanner.hasNext()) {
             String input = scanner.next();
             // TODO:
