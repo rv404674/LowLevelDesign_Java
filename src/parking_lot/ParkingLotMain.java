@@ -11,7 +11,12 @@ public class ParkingLotMain {
         scanner.useDelimiter(System.getProperty("line.separator"));
         ParkingLot parkingLot = null;
 
-        
+        // NOTE: Improvements
+        // 1. Read about enums, scanner, uml diagrams.
+        // 2. Use singleton design pattern here.
+        // 3. Make it Thread Safe (use synchronize).
+        // 4. For Ordering can use treeSet.
+
         while (scanner.hasNext()) {
             String input = scanner.next();
             // TODO:
