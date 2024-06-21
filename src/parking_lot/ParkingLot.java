@@ -32,7 +32,7 @@ public class ParkingLot {
         }
     }
 
-    public Ticket parkVehicle(VehicleType type, String RegistrationNumber, String colour) {
+    public synchronized Ticket parkVehicle(VehicleType type, String RegistrationNumber, String colour) {
         // figure out the slot
         Vehicle vehicle = new Vehicle(RegistrationNumber, colour, type);
         ParkingFloor availableFloor = null;
@@ -65,7 +65,7 @@ public class ParkingLot {
         return ticket;
     }
 
-    public void unParkVehicle(String ticketId) {
+    public synchronized void unParkVehicle(String ticketId) {
         Ticket parkedTicket = null;
         if (ticketHashSet.isEmpty()) {
             System.out.println("Invalid Ticket: No such vehicle exists");
