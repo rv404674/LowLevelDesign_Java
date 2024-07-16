@@ -1,10 +1,7 @@
 package InMemoryCache;
 
-import InMemoryCache.eviction.IEvictionPolicy;
-import InMemoryCache.eviction.LRUEviction;
+import InMemoryCache.publicinterfaces.CacheFactory;
 import InMemoryCache.publicinterfaces.InMemoryCache;
-import InMemoryCache.storage.HashMapStorage;
-import InMemoryCache.storage.IStorage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,10 +23,7 @@ public class MainApp {
 
             if (arrayStr[0].equals("initialize")) {
                 int capacity = Integer.parseInt(arrayStr[1]);
-                IEvictionPolicy evictionPolicy = new LRUEviction();
-                IStorage storage = new HashMapStorage();
-
-                inMemoryCache = new InMemoryCache(capacity, evictionPolicy, storage);
+                inMemoryCache = CacheFactory.getCache(capacity);
             } else if (arrayStr[0].equals("get")) {
                 String key = arrayStr[1];
                 String val = inMemoryCache.get(key);

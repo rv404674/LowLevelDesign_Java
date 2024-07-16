@@ -8,5 +8,4 @@ public interface IEvictionPolicy {
     // Front has the most recent elements.
     void moveToTheFront(String key);
 
-    void add(String key);
 }
