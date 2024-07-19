@@ -42,7 +42,7 @@ public class LRUEviction implements IEvictionPolicy {
     }
 
     @Override
-    public void moveToTheFront(String key) {
+    public void access(String key) {
         Node curNode = this.hashMap.get(key);
         if (curNode == null) {
             add(key);

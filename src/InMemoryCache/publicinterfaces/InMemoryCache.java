@@ -27,7 +27,7 @@ public class InMemoryCache {
                 return "";
             }
 
-            evictionPolicy.moveToTheFront(key);
+            evictionPolicy.access(key);
             return storage.get(key);
         } finally {
             lock.unlock();
@@ -44,13 +44,13 @@ public class InMemoryCache {
                 String evictedKey = evictionPolicy.evict();
                 storage.delete(evictedKey);
 
-                evictionPolicy.moveToTheFront(key);
+                evictionPolicy.access(key);
                 storage.put(key, value);
                 return;
             }
 
             // already exists or first time.
-            evictionPolicy.moveToTheFront(key);
+            evictionPolicy.access(key);
             storage.put(key, value);
         } finally {
             lock.unlock();

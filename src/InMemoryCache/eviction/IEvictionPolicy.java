@@ -6,6 +6,6 @@ public interface IEvictionPolicy {
     String evict();
 
     // Front has the most recent elements.
-    void moveToTheFront(String key);
+    void access(String key);
 
 }
