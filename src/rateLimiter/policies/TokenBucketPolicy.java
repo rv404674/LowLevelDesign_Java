@@ -37,9 +37,11 @@ public class TokenBucketPolicy implements IRateLimitingPolicy {
     // if within last 10mins, no request came, the bucket
     public void refill() {
         long now = System.currentTimeMillis();
-        long elapsedSeconds = (now - this.lastRefillTimeStamp) / 1000;
-        if (diff - now >= 60) {
-            this.currentBucketSize = maxBucketSize;
+        long elapsedMins = (now - this.lastRefillTimeStamp) / 60 * 1000;
+
+        long tokensToAdd = elapsedMins * refillRate;
+        if (tokensToAdd > 0) {
+            this.currentBucketSize = Math.min(tokensToAdd + currentBucketSize, this.maxBucketSize);
             this.lastRefillTimeStamp = now;
         }
     }
