@@ -1,15 +1,18 @@
-package elevatorSystem.MultipleElevatorSystem;
+package elevatorSystem.MultipleElevatorSystem.models;
 
 import java.util.PriorityQueue;
 
 public class Elevator {
-    int currentFloor;
+    int id;
+    Floor currentFloor;
     Direction direction;
     PriorityQueue<Request> upQueue;
     PriorityQueue<Request> downQueue;
 
-    public Elevator(int currentFloor) {
-        this.currentFloor = currentFloor;
+
+    public Elevator(int id, Floor baseFloor) {
+        this.id = id;
+        this.currentFloor = baseFloor;
         this.direction = Direction.IDLE;
 
         // [3,4] -> asc order while going up.

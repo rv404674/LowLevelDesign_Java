@@ -1,4 +1,4 @@
-package elevatorSystem.MultipleElevatorSystem;
+package elevatorSystem.MultipleElevatorSystem.models;
 
 public enum Direction {
     UP,
