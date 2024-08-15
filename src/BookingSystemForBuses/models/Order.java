@@ -14,6 +14,15 @@ public class Order {
         this.payments = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", payments=" + payments +
+                ", gatewayType='" + gatewayType + '\'' +
+                '}';
+    }
+
     public void addPayment(Payment payment) {
         this.payments.add(payment);
     }

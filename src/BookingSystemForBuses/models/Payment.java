@@ -13,6 +13,16 @@ public class Payment {
         this.createdAt = System.currentTimeMillis();
     }
 
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paymentId=" + paymentId +
+                ", paymentStatus=" + paymentStatus +
+                ", amount=" + amount +
+                ", createdAt=" + createdAt +
+                '}';
+    }
+
     public int getPaymentId() {
         return paymentId;
     }

@@ -28,6 +28,23 @@ public class Booking {
         this.expiredAt = this.createdAt + 5 * 60 * 1000;
     }
 
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingId='" + bookingId + '\'' +
+                ", fromStop='" + fromStop + '\'' +
+                ", toStop='" + toStop + '\'' +
+                ", fare=" + fare +
+                ", seatCount=" + seatCount +
+                ", createdAt=" + createdAt +
+                ", expiredAt=" + expiredAt +
+                ", bookingStatus=" + bookingStatus +
+                ", order=" + order +
+                ", userId='" + userId + '\'' +
+                ", reservationId='" + reservationId + '\'' +
+                '}';
+    }
+
     public String getBookingId() {
         return bookingId;
     }
