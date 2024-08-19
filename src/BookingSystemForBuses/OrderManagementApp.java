@@ -1,5 +1,8 @@
 package BookingSystemForBuses;
 
+import BookingSystemForBuses.gateways.GatewayFactory;
+import BookingSystemForBuses.gateways.GatewayType;
+import BookingSystemForBuses.gateways.IGateway;
 import BookingSystemForBuses.models.Request;
 import BookingSystemForBuses.storage.HashMapStorage;
 import BookingSystemForBuses.storage.IStorage;
@@ -9,7 +12,14 @@ import java.util.concurrent.Executors;
 
 public class OrderManagementApp {
     public static void main(String[] args) {
-        PaymentService paymentService = new PaymentService();
+        // FLOWS
+        // FLOW1
+        // createBooking() -> createOrder
+        // FLOW2 (client initiateid, client does the payment)
+        // makePayment() -> update Payments table, update Orders table.
+        // FLOW3 (CAPTURED) -> Razorpay webhook will hit markPaymentConfirmed();
+        IGateway gateway = GatewayFactory.getGateway(GatewayType.RAZORPAY.toString());
+        PaymentService paymentService = new PaymentService(gateway);
         IStorage bookingStorage = new HashMapStorage();
 
         BookingService bookingService = new BookingService(bookingStorage, paymentService);

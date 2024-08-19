@@ -3,6 +3,7 @@ package BookingSystemForBuses.models;
 import java.util.ArrayList;
 import java.util.List;
 
+// (orderId (given by razorpay), bookingId, chalOrderId (chalo's identifier), amount ...)
 public class Order {
     String orderId;
     List<Payment> payments;

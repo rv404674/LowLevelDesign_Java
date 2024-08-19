@@ -8,7 +8,6 @@ import BookingSystemForBuses.models.Request;
 import BookingSystemForBuses.models.StateValidation;
 import BookingSystemForBuses.storage.IStorage;
 
-import java.util.UUID;
 import java.util.concurrent.locks.ReentrantLock;
 
 // order creation
@@ -27,13 +26,16 @@ public class BookingService {
 
     public Booking createBooking(Request request) {
         Fare fare = calculateFare(request);
-        Booking booking = new Booking(request.getFromStop(), request.getToStop(), fare, 2, request.getUserId());
 
+        // handle concurrency.
         writeLock.lock();
-
         try {
+            // created booking
+            Booking booking = new Booking(request.getFromStop(), request.getToStop(), fare, 2, request.getUserId());
             System.out.println("Create Booking started by " + request.getUserId());
-            Order order = createOrder(booking);
+
+            // create order.
+            Order order = this.paymentService.createOrder(booking);
             booking.setOrder(order);
             System.out.println("Booking written to the db " + booking);
             this.bookingStorage.write(booking.getBookingId(), booking);
@@ -42,14 +44,6 @@ public class BookingService {
             writeLock.unlock();
         }
 
-    }
-
-    public Order createOrder(Booking booking) {
-        String orderId = UUID.randomUUID().toString();
-        Order order = new Order(orderId, "RAZORPAY");
-        System.out.println("hiiting payment service with order " + order);
-        paymentService.makePayment(order, booking.getFare().getTotalFare());
-        return order;
     }
 
     // This is being hit by the payment service, after money has been recieved.

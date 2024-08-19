@@ -1,7 +1,7 @@
 package BookingSystemForBuses.models;
 
 public enum BookingStatus {
-    IN_PROGRESS,
+    INITIATED,
     CONFIRMED,
     CANCELLED,
     EXPIRED,

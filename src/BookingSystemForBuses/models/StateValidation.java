@@ -7,8 +7,8 @@ public class StateValidation {
     static HashMap<BookingStatus, List<BookingStatus>> validationStates = new HashMap<>();
 
     static {
-        validationStates.put(BookingStatus.IN_PROGRESS,
-                List.of(BookingStatus.IN_PROGRESS, BookingStatus.CONFIRMED, BookingStatus.EXPIRED, BookingStatus.CANCELLED, BookingStatus.FAILED));
+        validationStates.put(BookingStatus.INITIATED,
+                List.of(BookingStatus.INITIATED, BookingStatus.CONFIRMED, BookingStatus.EXPIRED, BookingStatus.CANCELLED, BookingStatus.FAILED));
         validationStates.put(BookingStatus.CONFIRMED,
                 List.of(BookingStatus.CONFIRMED, BookingStatus.FAILED, BookingStatus.CANCELLED));
         validationStates.put(BookingStatus.FAILED, List.of(BookingStatus.FAILED));

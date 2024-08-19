@@ -1,7 +1,7 @@
 package BookingSystemForBuses.models;
 
 public enum PaymentStatus {
-    IN_PROGRESS,
-    SUCCESS,
+    INITIATED,
+    CAPTURED,
     FAILED
 }

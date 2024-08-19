@@ -22,7 +22,7 @@ public class Booking {
         this.fare = fare;
         this.seatCount = seatCount;
         this.userId = userId;
-        this.bookingStatus = BookingStatus.IN_PROGRESS;
+        this.bookingStatus = BookingStatus.INITIATED;
         this.createdAt = System.currentTimeMillis();
         // TTL of 5mins.
         this.expiredAt = this.createdAt + 5 * 60 * 1000;

@@ -1,5 +1,6 @@
 package BookingSystemForBuses.models;
 
+// (paymentId, orderId, status, ..)
 public class Payment {
     int paymentId;
     PaymentStatus paymentStatus;
@@ -8,7 +9,7 @@ public class Payment {
 
     public Payment(int paymentId, int amount) {
         this.paymentId = paymentId;
-        this.paymentStatus = PaymentStatus.IN_PROGRESS;
+        this.paymentStatus = PaymentStatus.INITIATED;
         this.amount = amount;
         this.createdAt = System.currentTimeMillis();
     }
