@@ -4,13 +4,13 @@ import java.util.PriorityQueue;
 
 public class Elevator {
     int id;
-    Floor currentFloor;
+    int currentFloor;
     Direction direction;
     PriorityQueue<Request> upQueue;
     PriorityQueue<Request> downQueue;
 
 
-    public Elevator(int id, Floor baseFloor) {
+    public Elevator(int id, int baseFloor) {
         this.id = id;
         this.currentFloor = baseFloor;
         this.direction = Direction.IDLE;

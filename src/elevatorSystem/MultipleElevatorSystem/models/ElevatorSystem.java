@@ -27,7 +27,7 @@ public class ElevatorSystem {
 
         for (int i = 1; i <= elevators; i++) {
             list.add(
-                    new Elevator(1, baseFloor)
+                    new Elevator(1, 0)
             );
         }
 
